@@ -110,23 +110,25 @@ postagePrice package =
 -- Use pattern matching! Don't use comparisons!
 --
 -- Ps. remember, the type of booleans in haskell is Bool
-
-isZero = todo
-
+isZero :: Integer -> Bool
+isZero 0 = True
+isZero _ = False  
 ------------------------------------------------------------------------------
 -- Ex 9: implement using recursion a function sumTo such that
 --   sumTo n
 -- computes the sum 1+2+...+n
 
 sumTo :: Integer -> Integer
-sumTo = todo
+sumTo 0 = 0
+sumTo n = n + sumTo (n-1) 
 
 ------------------------------------------------------------------------------
 -- Ex 10: power n k should compute n to the power k (i.e. n^k)
 -- Use recursion.
 
 power :: Integer -> Integer -> Integer
-power = todo
+power n 0 = 1
+power n k = n * power n (k-1)
 
 ------------------------------------------------------------------------------
 -- Ex 11: ilog3 n should be the number of times you can divide given
@@ -145,4 +147,6 @@ power = todo
 --   ilog3 7 ==> 2
 
 ilog3 :: Integer -> Integer
-ilog3 = todo
+three = 3
+ilog3 0 = 0
+ilog3 n = ilog3(div n three) + 1
