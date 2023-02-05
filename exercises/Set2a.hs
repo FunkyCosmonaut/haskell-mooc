@@ -89,8 +89,10 @@ isPalindrome str = str == reverse str
 --   palindromify "abracacabra" ==> "acaca"
 
 palindromify :: String -> String
-palindromify s = todo
-
+palindromify s = if (s == reverse s)
+    then s
+    else palindromify (take ((length s) - 2) (drop ((length s) - ((length s) - 1)) s))
+--Note to self, come back and do this again with guards instead
 ------------------------------------------------------------------------------
 -- Ex 7: implement safe integer division, that is, a function that
 -- returns a Just result normally, but Nothing if the divisor is zero.
