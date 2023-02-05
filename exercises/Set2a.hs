@@ -89,9 +89,9 @@ isPalindrome str = str == reverse str
 --   palindromify "abracacabra" ==> "acaca"
 
 palindromify :: String -> String
-palindromify s = if (s == reverse s)
-    then s
-    else palindromify (take ((length s) - 2) (drop ((length s) - ((length s) - 1)) s))
+palindromify s 
+    | (s == reverse s)  = s
+    | otherwise         = palindromify (take ((length s) - 2) (drop ((length s) - ((length s) - 1)) s))
 --Note to self, come back and do this again with guards instead
 ------------------------------------------------------------------------------
 -- Ex 7: implement safe integer division, that is, a function that
@@ -104,7 +104,9 @@ palindromify s = if (s == reverse s)
 --   safeDiv 4 0  ==> Nothing
 
 safeDiv :: Integer -> Integer -> Maybe Integer
-safeDiv x y = todo
+safeDiv x y = if (y==0)
+    then Nothing
+    else Just (div x y)
 
 ------------------------------------------------------------------------------
 -- Ex 8: implement a function greet that greets a person given a first
@@ -116,8 +118,9 @@ safeDiv x y = todo
 --   greet "John" (Just "Smith")  ==> "Hello, John Smith!"
 
 greet :: String -> Maybe String -> String
-greet first last = todo
-
+greet first Nothing = "Hello, " ++ first ++ "!"
+greet first (Just last) = ("Hello, " ++ first ++ " " ++ last ++ "!")
+--Check the ideal version of this
 ------------------------------------------------------------------------------
 -- Ex 9: safe list indexing. Define a function safeIndex so that
 --   safeIndex xs i
@@ -132,7 +135,11 @@ greet first last = todo
 --   safeIndex ["a","b","c"] (-1)  ==> Nothing
 
 safeIndex :: [a] -> Int -> Maybe a
-safeIndex xs i = todo
+
+safeIndex xs i = Just(xs!!i)
+
+
+
 
 ------------------------------------------------------------------------------
 -- Ex 10: another variant of safe division. This time you should use
