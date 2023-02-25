@@ -136,9 +136,11 @@ greet first (Just last) = ("Hello, " ++ first ++ " " ++ last ++ "!")
 
 safeIndex :: [a] -> Int -> Maybe a
 
---safeIndex xs i = Just(xs!!i)
-safeIndex _ _ = Nothing
-safeIndex xs i = Just(xs!!i)
+safeIndex xs i = if ((i >= 0) && (i <length xs)) then Just (xs!!i) else Nothing
+--safeIndex _ _ = Nothing
+
+
+
 
 
 
@@ -152,7 +154,10 @@ safeIndex xs i = Just(xs!!i)
 --   eitherDiv 4 0   ==> Left "4/0"
 
 eitherDiv :: Integer -> Integer -> Either String Integer
-eitherDiv x y = todo
+eitherDiv x y = Right (div x y)
+eitherDiv x 0 = Left "error"
+
+
 
 ------------------------------------------------------------------------------
 -- Ex 11: implement the function addEithers, which combines two values of type
